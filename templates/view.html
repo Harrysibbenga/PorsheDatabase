@@ -1,0 +1,137 @@
+{% extends "base.html" %}
+{% block page_content %}
+<section class="driver_profiles">
+    <div class="container">
+        <div class="row">
+            <!-- Grid column -->
+            <div class="col-xl-5 col-md-6 my-3 text-center">
+                {% if driver.profile_image == '' %}
+                <img src="../static/images/drivers/default_human_icon.jpg" class="img-fluid z-depth-1 rounded-circle"
+                    alt="Default avatar image">
+                <a class="btn-floating btn-lg btn-default" href="{{url_for('edit_driver', driver_id=driver._id)}}"><i
+                        class="fas fa-user-edit"></i></a>
+                {% else %}
+                <img src="../static/images/drivers/{{driver.profile_image}}" class="img-fluid z-depth-1 rounded-circle"
+                    alt="{{driver.driver_name}}">
+                <a class="btn-floating btn-lg btn-default" href="{{url_for('edit_driver', driver_id=driver._id)}}"><i
+                        class="fas fa-user-edit"></i></a>
+                {% endif %}
+                <!-- Title -->
+                <h2 class=" title my-4 display-4">{{ driver.driver_name }}</h2>
+                <p>{{driver.profile_img}}</p>
+            </div>
+
+            <!-- Profile information -->
+            <div class="col-md-6 col-xl-5 my-3">
+                <div class="d-inline">
+                    <h2 class="d-inline">Profile</h2>
+                    <a class="btn btn-default btn-sm d-inline"
+                        href="{{url_for('edit_driver', driver_id=driver._id)}}">Edit</a>
+                </div>
+                <dl class="row">
+                    <!-- dob -->
+                    <div class="col-12">
+                        <dt class="d-inline">Date of Birth:</dt>
+                        <dd class="d-inline">{{ driver.date_of_birth }}</dd>
+                    </div>
+                    <!-- born -->
+                    <div class="col-12">
+                        <dt class="d-inline">Born:</dt>
+                        <dd class="d-inline">{{ driver.born }}</dd>
+                    </div>
+                    <!-- lives -->
+                    <div class="col-12">
+                        <dt class="d-inline">Lives:</dt>
+                        <dd class="d-inline">{{ driver.lives }}</dd>
+                    </div>
+                    <!-- current team -->
+                    <div class="col-12">
+                        <dt class="d-inline">Current Team:</dt>
+                        <dd class="d-inline">{{ driver.team }}</dd>
+                    </div>
+                    <!-- years in carrera cup -->
+                    <div class="col-12">
+                        <dt class="d-inline">Years in Carrera Cup:</dt>
+                        <dd class="d-inline">{{ driver.total_years_in_carrera_cup }} {{ driver.years_in_carrera_cup }}
+                        </dd>
+                    </div>
+                    <!-- champinonships -->
+                    <div class="col-12">
+                        <dt class="d-inline">Champinonships:</dt>
+                        <dd class="d-inline">{{ driver.championship_wins }}</dd>
+                    </div>
+                </dl>
+            </div>
+
+            <!-- This season -->
+            <div class="col-md-6 col-xl-5 my-3">
+                <h2>This season:</h2>
+                <dl class="row">
+                    <!-- races -->
+                    <div class="col-12">
+                        <dt class="d-inline">Races:</dt>
+                        <dd class="d-inline">{{ driver.date_of_birth }}</dd>
+                    </div>
+                    <!-- wins -->
+                    <div class="col-12">
+                        <dt class="d-inline">Wins:</dt>
+                        <dd class="d-inline">{{ driver.born }}</dd>
+                    </div>
+                    <!-- win rate -->
+                    <div class="col-12">
+                        <dt class="d-inline">Win Rate:</dt>
+                        <dd class="d-inline">{{ driver.lives }}</dd>
+                    </div>
+                    <!-- podiums -->
+                    <div class="col-12">
+                        <dt class="d-inline">Podiums:</dt>
+                        <dd class="d-inline">{{ driver.championships }}</dd>
+                    </div>
+                    <!-- podium rate -->
+                    <div class="col-12">
+                        <dt class="d-inline">Podium Rate:</dt>
+                        <dd class="d-inline">{{ driver.total_years_in_carrera_cup }} {{ driver.years_in_carrera_cup }}
+                        </dd>
+                    </div>
+                    <!-- points -->
+                    <div class="col-12">
+                        <dt class="d-inline">Points:</dt>
+                        <dd class="d-inline">{{ driver.championship_wins }}</dd>
+                    </div>
+                    <!-- avarage points per race -->
+                    <div class="col-12">
+                        <dt class="d-inline">Avarage points per race:</dt>
+                        <dd class="d-inline">{{ driver.championship_wins }}</dd>
+                    </div>
+                    <!-- pole positions -->
+                    <div class="col-12">
+                        <dt class="d-inline">Pole Positions:</dt>
+                        <dd class="d-inline">{{ driver.championship_wins }}</dd>
+                    </div>
+                    <!-- fastest laps -->
+                    <div class="col-12">
+                        <dt class="d-inline">Fastest Laps:</dt>
+                        <dd class="d-inline">{{ driver.championship_wins }}</dd>
+                    </div>
+                    <!-- positions gained -->
+                    <div class="col-12">
+                        <dt class="d-inline">Positions gained:</dt>
+                        <dd class="d-inline">{{ driver.championship_wins }}</dd>
+                    </div>
+                    <!-- car -->
+                    <div class="col-12">
+                        <dt class="d-inline">Car:</dt>
+                        <dd class="d-inline">{{ driver.championship_wins }}</dd>
+                    </div>
+                    <!-- tyres -->
+                    <div class="col-12">
+                        <dt class="d-inline">Tyres:</dt>
+                        <dd class="d-inline">{{ driver.championship_wins }}</dd>
+                    </div>
+                </dl>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

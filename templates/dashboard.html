@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+{% block page_content %}
+<section class="container">
+    <form action="{{url_for('input_data')}}" method="POST" enctype="multipart/form-data">
+        <div class="row">
+            <div class="col-12">
+                <label for="championship_name">Championship name:</label>
+                <input type="text" id="championship_name" name="championship_name">
+                <label for="track_name">Track name:</label>
+                <input type="text" id="track_name" name="track_name">
+                <label for="year">Year:</label>
+                <input type="number" id="year" name="year">
+                <label for="round_number">Round:</label>
+                <input type="number" id="round_number" name="round_number">
+            </div>
+            <div class="col-12">
+                <label for="practice_1">Practice 1 CSV file:</label>
+                <input type="file" id="practice_1" name="practice_1" accept=".csv" value="blank">
+                <label for="practice_1_date">Date:</label>
+                <input type="date" name="practice_1_date" id="practice_1_date">
+                <label for="practice_1_time">Time:</label>
+                <input type="time" name="practice_1_time" id="practice_1_time">
+            </div>
+            <div class="col-12">
+                <label for="practice_2">Practice 2 CSV file:</label>
+                <input type="file" id="practice_2" name="practice_2" accept=".csv" value="blank">
+                <label for="practice_2_date">Date:</label>
+                <input type="date" name="practice_2_date" id="practice_2_date">
+                <label for="practice_2_time">Time:</label>
+                <input type="time" name="practice_2_time" id="practice_2_time">
+            </div>
+            <div class="col-12">
+                <label for="qualifying">Qualifying CSV file:</label>
+                <input type="file" id="qualifying" name="qualifying" accept=".csv" value="blank">
+                <label for="qualifying_date">Date:</label>
+                <input type="date" name="qualifying_date" id="qualifying_date">
+                <label for="qualifying_time">Time:</label>
+                <input type="time" name="qualifying_time" id="qualifying_time">
+            </div>
+            <div class="col-12">
+                <label for="race_1">Race 1 CSV file:</label>
+                <input type="file" id="race_1" name="race_1" accept=".csv" value="blank">
+                <label for="race_1_date">Date:</label>
+                <input type="date" name="race_1_date" id="race_1_date">
+                <label for="race_1_time">Time:</label>
+                <input type="time" name="race_1_time" id="race_1_time">
+            </div>
+            <div class="col-12">
+                <label for="race_2">Race 2 CSV file:</label>
+                <input type="file" id="race_2" name="race_2" accept=".csv" value="blank">
+                <label for="race_2_date">Date:</label>
+                <input type="date" name="race_2_date" id="race_2_date">
+                <label for="race_2_time">Time:</label>
+                <input type="time" name="race_2_time" id="race_2_time">
+            </div>
+            <div class="text-right">
+                <button class="btn btn-default btn-sm right" type="submit">Upload</button>
+            </div>
+        </div>
+    </form>
+
+    <form action="{{url_for('view_driver_dash')}}" method="POST">
+        <select name="driver" id="driver">
+            <option disabled selected>Choose a driver</option>
+            {% for driver in drivers %}
+            <option value="{{driver.driver_name}}">{{driver.driver_name}}</option>
+            {% endfor %}
+        </select>
+        <button class="btn btn-default btn-sm" type="submit" name="action">View</button>
+    </form>
+
+</section>
+{% endblock %}

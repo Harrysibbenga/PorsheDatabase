@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% block page_content %}
+<section class="driver_profiles">
+    <div class="container">
+        <div class="row">
+            <!-- Grid column -->
+            <div class="col-12 my-3 text-center">
+                <!-- Title -->
+                <h2 class="title my-4 display-4">{{ driver.driver_name }}</h2>
+            </div>
+
+            <!-- Profile information -->
+            <div class="col-12 my-3">
+                <h2>Edit Profile</h2>
+                <form action="{{url_for('update_driver', driver_id=driver._id)}}" method="POST"
+                    enctype="multipart/form-data">
+                    <div class="row">
+                        <!-- dob -->
+                        <div class="col-12">
+                            <label for="date_of_birth">Date of Birth:</label>
+                            <input type="date" value="{{driver.date_of_birth}}" name="date_of_birth">
+                        </div>
+                        <!-- born -->
+                        <div class="col-12">
+                            <label for="born">Born:</label>
+                            <input type="text" value="{{driver.born}}" name="born">
+                        </div>
+                        <!-- lives -->
+                        <div class="col-12">
+                            <label for="lives">Lives:</label>
+                            <input type="text" value="{{driver.lives}}" name="lives">
+                        </div>
+                        <!-- current team -->
+                        <div class="col-12">
+                            <label for="team">Team:</label>
+                            <input type="text" value="{{driver.team}}" name="team">
+                        </div>
+                        <!-- current team -->
+                        <div class="col-12">
+                            <label for="description">Description:</label>
+                            <input type="text" value="{{driver.description}}" name="description">
+                        </div>
+                        <div class="col-12">
+                            <label for="profile_image">Driver image:</label>
+                            <input type="file" name="profile_image" accept="image/*">
+                        </div>
+                        <button class="btn btn-default" type="submit">Edit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
