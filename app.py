@@ -54,6 +54,7 @@ def get_value_from_collection(coll, field, name):
 # routes
 @app.route('/')
 def index():
+    # Displays all the driver profiles on the index.html page 
     drivers = mongo.db.drivers.find()
     return render_template("index.html", drivers=drivers)
 
@@ -199,12 +200,14 @@ def input_data():
 
 @app.route('/view_driver/<driver_id>', methods=['GET', 'POST'])
 def view_driver(driver_id):
+    # Displays the driver profile in the view.html page 
     driver = mongo.db.drivers.find_one({'_id': ObjectId(driver_id)})
     return render_template("view.html", driver=driver)
 
 
 @app.route('/view_driver_dash', methods=['GET', 'POST'])
 def view_driver_dash():
+    # Displays the driver profile in the view.html page when the driver is selected via select tag in the dashboard 
     selected_name = request.form.get("driver")
     driver = mongo.db.drivers.find_one({'driver_name': selected_name})
     return render_template("view.html", driver=driver)
@@ -212,12 +215,15 @@ def view_driver_dash():
 
 @app.route('/edit_driver/<driver_id>', methods=['GET'])
 def edit_driver(driver_id):
+    # Directs the use to the editdriver.html page when user needs to update driver details 
     driver = mongo.db.drivers.find_one({'_id': ObjectId(driver_id)})
     return render_template('editdriver.html', driver=driver)
 
 
 @app.route('/update_driver/<driver_id>', methods=['GET', 'POST'])
 def update_driver(driver_id):
+    # This route gets the current driver information and updates it based on the information the user has put in 
+    # Redirects them to the view.html page after so the user can see these changes
     driver = mongo.db.drivers.find_one({'_id': ObjectId(driver_id)})
     target = os.path.join(APP_ROOT, 'static/images/drivers')
 
